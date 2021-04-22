@@ -5,6 +5,7 @@ import Date from '../components/date'
 import utilStyles from '../styles/utils.module.css'
 
 import { getSortedPostsData } from '../lib/posts'
+import generateRssFeed from '../lib/rss'
 
 import { GetStaticProps } from 'next'
 
@@ -43,7 +44,11 @@ export default function Home({
 }
 
 export const getStaticProps: GetStaticProps = async function getStaticProps() {
+
+  await generateRssFeed()
+
   const allPostsData = getSortedPostsData()
+
   return {
     props: {
       allPostsData,
