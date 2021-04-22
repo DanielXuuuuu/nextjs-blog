@@ -33,7 +33,7 @@ async function generateRssFeed() {
   const posts = await getSortedPostsData()
 
   for (let post of posts) {
-    const url = `${baseUrl}/${post.id}`;
+    const url = `${baseUrl}/posts/${post.id}`;
     const postData = await getPostData(post.id);
 
     feed.addItem({
