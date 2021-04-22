@@ -31,8 +31,8 @@ async function generateRssFeed() {
   });
   
   const posts = await getSortedPostsData()
-  
-  posts.forEach(async (post) => {
+
+  for (let post of posts) {
     const url = `${baseUrl}/${post.id}`;
     const postData = await getPostData(post.id);
 
@@ -40,13 +40,13 @@ async function generateRssFeed() {
       title: post.title,
       id: url,
       link: url,
-      description: 'test', 
+      // description: 'test', 
       content: postData.contentHtml,
       author: [author],
       contributor: [author],
       date: new Date(post.date)
     })
-  })
+  }
   
   fs.mkdirSync('./public/rss', {recursive: true})
   fs.writeFileSync('./public/rss/feed.xml', feed.rss2())
