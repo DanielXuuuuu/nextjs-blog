@@ -1,6 +1,9 @@
 ---
-title: 'When to Use Static Generation v.s. Server-side Rendering'
-date: '2020-01-02'
+title: When to Use Static Generation v.s. Server-side Rendering
+seoTitle: How I Built my Blog using MDX, Next.js, and React
+abstract: An in-depth look at the technical structure for my blog.
+isPublished: true
+publishedOn: '2020-01-02'
 ---
 
 We recommend using **Static Generation** (with and without data) whenever possible because your page can be built once and served by CDN, which makes it much faster than having a server render the page on every request.

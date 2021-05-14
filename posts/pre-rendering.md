@@ -1,6 +1,9 @@
 ---
 title: 'Two Forms of Pre-rendering'
-date: '2020-01-01'
+seoTitle: How I Built my Blog using MDX, Next.js, and React
+abstract: An in-depth look at the technical structure for my blog.
+isPublished: true
+publishedOn: '2020-01-01'
 ---
 
 Next.js has two forms of pre-rendering: **Static Generation** and **Server-side Rendering**. The difference is in **when** it generates the HTML for a page.

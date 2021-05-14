@@ -6,10 +6,24 @@ import html from 'remark-html'
 
 const postsDirectory = path.join(process.cwd(), 'posts')
 
-export function getSortedPostsData() {
+export interface PostMeta {
+  title: string
+  publishedOn: string
+  isPublished: boolean
+  seoTitle: string
+  abstract: string
+}
+
+export interface Post {
+  id: string
+  contentHtml?: string, 
+  meta: PostMeta
+}
+
+export function getSortedPostsData(): Post[] {
   const filenames = fs.readdirSync(postsDirectory);
 
-  const allPostsData = filenames.map(filename => {
+  const allPostsData: Post[] = filenames.map(filename => {
     const id = filename.replace(/\.md$/, '')
 
     const fullPath = path.join(postsDirectory, filename)
@@ -19,12 +33,12 @@ export function getSortedPostsData() {
 
     return {
       id,
-      ...(matterResult.data as { title: string; date: string })
+      meta: matterResult.data as PostMeta
     }
-  })
+  }).filter(post => post.meta.isPublished)
 
   return allPostsData.sort((a, b) => {
-    if (a.date < b.date) {
+    if (a.meta.publishedOn < b.meta.publishedOn) {
       return 1
     } else {
       return -1
@@ -44,7 +58,7 @@ export function getAllPostIds() {
   })
 }
 
-export async function getPostData(id: string) {
+export async function getPostData(id: string): Promise<Post> {
   const fullPath = path.join(postsDirectory, `${id}.md`)
   const fileContent = fs.readFileSync(fullPath, 'utf8')
 
@@ -59,7 +73,7 @@ export async function getPostData(id: string) {
   return {
     id,
     contentHtml,
-    ...(matterResult.data as { date: string, title: string }),
+    meta: matterResult.data as PostMeta
   }
 
 }

@@ -1,12 +1,38 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
+
+import styled from 'styled-components'
 
 import styles from './layout.module.css'
-import utilStyles from '../styles/utils.module.css'
 
 const name = 'Daniel Xu'
 export const siteTitle = 'Next.js Sample Website'
+
+const HomeHeader = styled.div`
+  font-size: 1rem;
+  font-weight: 10;
+  margin-bottom: 2rem;
+  color: #FF0878;
+`
+
+const Footer = styled.footer`
+  width: 100%;
+  padding: 3rem;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  background: ${({ theme }) => theme.footer}; 
+  background-image: ${({ theme }) => theme.footer}; 
+  color: ${({ theme }) => theme.text}; 
+`
+const FooterLinkContainer = styled.div`
+  margin: 1.3rem 0;
+`
+const FooterLink = styled.a`
+  color: inherit;
+  &+& {
+    margin-left: 1rem;
+  }
+`
 
 export default function Layout({
   children,
@@ -15,8 +41,9 @@ export default function Layout({
   children: React.ReactNode
   home?: boolean
 }) {
+
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -32,49 +59,19 @@ export default function Layout({
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
-        {home ? (
-          <>
-            <Image
-              priority
-              src="/images/profile.jpeg"
-              className={utilStyles.borderCircle}
-              height={144}
-              width={144}
-              alt={name}
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <a>
-                <Image
-                  priority
-                  src="/images/profile.jpeg"
-                  className={utilStyles.borderCircle}
-                  height={144}
-                  width={144}
-                  alt={name}
-                />
-              </a>
-            </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
-              </Link>
-            </h2>
-          </>
-        )}
-      </header>
-      <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
-        </div>
-      )}
-    </div>
+      <div className={styles.container}>
+        {home && <HomeHeader>LATEST POSTS</HomeHeader>}
+        <main>{children}</main>
+      </div>
+      <Footer>
+        <div>✌️</div>
+        <FooterLinkContainer>
+          <FooterLink href="https://github.com/DanielXuuuuu" target="__blank">github</FooterLink>
+          <FooterLink href="/rss/feed.xml" target="__blank">rss</FooterLink>
+          <FooterLink href="https://twitter.com/danielxuuuuu" target="__blank">twitter</FooterLink>
+        </FooterLinkContainer>
+        <small>© 2021 {name}. All Rights Reserved.</small>
+      </Footer>
+    </>
   )
 }

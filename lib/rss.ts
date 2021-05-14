@@ -1,5 +1,5 @@
 import { Feed } from 'feed'
-import { getSortedPostsData, getPostData } from './posts'
+import { getSortedPostsData, getPostData, Post } from './posts'
 import fs from 'fs'
 
 async function generateRssFeed() {
@@ -23,33 +23,33 @@ async function generateRssFeed() {
     updated: date,
     generator: "Next.js using Feed for Node.js",
     feedLinks: {
-      rss2: `${baseUrl}/rss/feed.xml`,
+      rss2: `${baseUrl}/rss.xml`,
       json: "https://example.com/json",
       atom: "https://example.com/atom"
     },
     author, 
   });
   
-  const posts = await getSortedPostsData()
+  const posts: Post[] = await getSortedPostsData()
 
   for (let post of posts) {
     const url = `${baseUrl}/posts/${post.id}`;
     const postData = await getPostData(post.id);
 
     feed.addItem({
-      title: post.title,
+      title: post.meta.title,
       id: url,
       link: url,
       // description: 'test', 
       content: postData.contentHtml,
       author: [author],
       contributor: [author],
-      date: new Date(post.date)
+      date: new Date(post.meta.publishedOn)
     })
   }
   
-  fs.mkdirSync('./public/rss', {recursive: true})
-  fs.writeFileSync('./public/rss/feed.xml', feed.rss2())
+  // fs.mkdirSync('./public/rss', {recursive: true})
+  fs.writeFileSync('./public/rss.xml', feed.rss2())
 }
 
 export default generateRssFeed;

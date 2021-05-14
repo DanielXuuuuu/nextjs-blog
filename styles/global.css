@@ -25,3 +25,14 @@ img {
   max-width: 100%;
   display: block;
 }
+
+*::selection {
+  color: #FFF;
+  background: #DA344D;
+}
+
+#__next {
+  min-height: 100vh;
+  padding-bottom: 9rem;
+  position: relative;
+}
