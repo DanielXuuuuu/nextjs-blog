@@ -4,12 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "build:rss": "babel-node ./lib/generate-rss-feed.ts --extensions \".ts\"",
+    "prebuild": "npm run build:rss",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
     "@svgr/webpack": "^5.5.0",
-    "babel-plugin-styled-components": "^1.12.0",
     "date-fns": "^2.21.1",
     "feed": "^4.2.2",
     "gray-matter": "^4.0.2",
@@ -22,9 +23,15 @@
     "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.13.16",
+    "@babel/core": "^7.14.2",
+    "@babel/node": "^7.14.2",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/preset-typescript": "^7.13.0",
     "@types/node": "^14.14.41",
     "@types/react": "^17.0.3",
     "@types/webpack-env": "^1.16.0",
+    "babel-plugin-styled-components": "^1.12.0",
     "typescript": "^4.2.4"
   }
 }

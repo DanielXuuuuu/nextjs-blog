@@ -25,7 +25,9 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "lib/posts.js",
+    "lib/generate-rss-feed.js"
   ],
   "exclude": [
     "node_modules"

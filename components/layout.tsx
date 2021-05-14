@@ -9,7 +9,6 @@ export const siteTitle = 'Next.js Sample Website'
 
 const HomeHeader = styled.div`
   font-size: 1rem;
-  font-weight: 10;
   margin-bottom: 2rem;
   color: #FF0878;
 `

@@ -39,7 +39,7 @@ const ReadMoreLink = styled.a`
   display: block;
 `
 
-export default function ({
+export default function PostSummary({
   post
 }: {
   post: Post

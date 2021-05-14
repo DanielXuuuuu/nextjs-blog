@@ -3,7 +3,6 @@ import Layout, { siteTitle } from '../components/layout'
 import Post from '../components/post'
 
 import { getSortedPostsData } from '../lib/posts'
-import generateRssFeed from '../lib/rss'
 
 import { GetStaticProps } from 'next'
 
@@ -23,7 +22,7 @@ export default function Home({ posts }) {
 
 export const getStaticProps: GetStaticProps = async function getStaticProps() {
 
-  await generateRssFeed()
+  // await generateRssFeed()
 
   const allPostsData = getSortedPostsData()
 

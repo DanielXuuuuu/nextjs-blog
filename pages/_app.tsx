@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { AppProps } from 'next/app'
 import Link from 'next/link'
 
@@ -40,27 +40,34 @@ const Icon = styled.span`
 const LinkIcon = styled(Icon)``
 
 function App({ Component, pageProps }: AppProps) {
-
-  const darkMode = useDarkMode(false)
+  const [isMounted, setIsMounted] = useState(false)
+  const darkMode = useDarkMode(true)
   const theme = darkMode.value ? darkTheme : lightTheme
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   return (
     <ThemeProvider theme={theme} darkMode={darkMode}>
       <GlobalStyles />
-      <HeaderWrapper>
-        <Header>
-          <h3 className={utilStyles.headingLg}>
-            <Link href="/">
-              <a className={utilStyles.colorInherit}>Daniel's Blog.</a>
-            </Link>
-          </h3>
-          <IconContainer>
-            <Icon onClick={darkMode.toggle}>{darkMode.value ? <Dark /> : <Light />}</Icon>
-            <LinkIcon as="a" href="/rss.xml" target="__blank"><Rss /></LinkIcon>
-          </IconContainer>
-        </Header>
-      </HeaderWrapper>
-      <Component {...pageProps} />
+      {isMounted &&
+        <>
+          <HeaderWrapper>
+            <Header>
+              <h3 className={utilStyles.headingLg}>
+                <Link href="/">
+                  <a className={utilStyles.colorInherit}>Daniel's Blog.</a>
+                </Link>
+              </h3>
+              <IconContainer>
+                <Icon onClick={darkMode.toggle}>{darkMode.value ? <Dark /> : <Light />}</Icon>
+                <LinkIcon as="a" href="/rss/feed.xml" target="__blank"><Rss /></LinkIcon>
+              </IconContainer>
+            </Header>
+          </HeaderWrapper>
+          <Component {...pageProps} />
+        </>}
     </ThemeProvider >
   )
 }

@@ -1,8 +1,22 @@
 {
-  "presets": ["next/babel"],
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "esmodules": true,
+        }
+      }
+    ],
+    "@babel/preset-typescript",
+    "next/babel",
+  ],
   "plugins": [
     [
-      "styled-components",{ "ssr":true }
+      "styled-components",
+      {
+        "ssr": true
+      }
     ]
   ]
 }

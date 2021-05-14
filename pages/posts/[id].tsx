@@ -8,7 +8,7 @@ import { getAllPostIds, getPostData, Post } from '../../lib/posts'
 
 import { GetStaticPaths, GetStaticProps } from 'next'
 
-export default function ({
+export default function PostDetail({
   postData
 }: {
   postData: Post
