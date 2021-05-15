@@ -8,6 +8,7 @@ import useDarkMode from 'use-dark-mode'
 import { lightTheme, darkTheme, GlobalStyles } from '../themeConfig'
 import utilStyles from '../styles/utils.module.css'
 import '../styles/global.css'
+import '../styles/prism.css'
 
 import Light from '../assets/svg/light.svg'
 import Dark from '../assets/svg/dark.svg'
@@ -19,8 +20,8 @@ const HeaderWrapper = styled.div`
 
 const Header = styled.header`
   margin: 0 auto;
-  padding: 0 1rem;
-  max-width: 43rem;
+  padding: 0 1.5rem;
+  max-width: 40rem;
   display: flex;
   align-items: center;
   justify-content: space-between;

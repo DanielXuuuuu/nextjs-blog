@@ -3,6 +3,8 @@ import path from 'path'
 import matter from 'gray-matter'
 import remark from 'remark'
 import html from 'remark-html'
+import prism from 'remark-prism';
+import readingTime from 'reading-time'
 
 const postsDirectory = path.join(process.cwd(), 'posts')
 
@@ -12,6 +14,7 @@ export interface PostMeta {
   isPublished: boolean
   seoTitle: string
   abstract: string
+  readTime: string
 }
 
 export interface Post {
@@ -66,14 +69,18 @@ export async function getPostData(id: string): Promise<Post> {
 
   const processedContent = await remark()
     .use(html)
+    .use(prism)
     .process(matterResult.content)
 
   const contentHtml = processedContent.toString()
+  const stats = readingTime(contentHtml);
 
   return {
     id,
     contentHtml,
-    meta: matterResult.data as PostMeta
+    meta: {
+      readTime: stats.text,
+      ...matterResult.data as PostMeta,
+    }
   }
-
 }

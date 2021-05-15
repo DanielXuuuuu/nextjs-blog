@@ -8,7 +8,6 @@ const name = 'Daniel Xu'
 export const siteTitle = 'Next.js Sample Website'
 
 const HomeHeader = styled.div`
-  font-size: 1rem;
   margin-bottom: 2rem;
   color: #FF0878;
 `

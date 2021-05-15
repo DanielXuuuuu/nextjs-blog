@@ -17,9 +17,6 @@ const PostWrapper = styled.a`
   }
 `
 
-const MarginLeftSpan = styled.span`
-  margin-left: 1rem;
-`
 const PostTitle = styled.h2`
   font-size: 1.2rem;
   line-height: 1.5rem;
@@ -56,10 +53,7 @@ export default function PostSummary({
         <PostWrapper>
           <PostTitle>{meta.title}</PostTitle>
           <small className={utilStyles.lightText}>
-            on <Date dateString={meta.publishedOn} />
-            {/* <MarginLeftSpan role='img' aria-label='one coffee'> */}
-            {/* ☕ {meta.readTime + ' min read'} */}
-            {/* </MarginLeftSpan> */}
+            <Date dateString={meta.publishedOn} />
           </small>
           <PostAbstract>{meta.abstract}</PostAbstract>
           <ReadMoreLink>Read more</ReadMoreLink>
