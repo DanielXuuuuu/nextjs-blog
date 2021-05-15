@@ -25,8 +25,8 @@ export default function About() {
       <div>Hi, I am daniel, a undergraduate student at <a href="http://www.sysu.edu.cn/cn/index.htm" target="__blank">Sun Yat-Sen University</a>, and my chinese name is 徐肯.</div>
       <h2>Timeline</h2>
       <ul>
-        <li>2020.11 - 2021.1, Front-end development intern in Alibaba (fliggy).</li>
-        <li>2020.4 - 2020.7, Front-end development intern in Tencent (Weixin Group). </li>
+        <li>2020.11 - 2021.1, Front-end development intern in <a href="https://www.fliggy.com" target="__blank" >fliggy</a>, Alibaba.</li>
+        <li>2020.4 - 2020.7, Front-end development intern in <a href="https://www.wechat.com/" target="__blank" >WeChat</a>, Tencent. </li>
         <li>2017.9 - present, study in Sun Yat-Sen University.</li>
       </ul>
     </Layout>

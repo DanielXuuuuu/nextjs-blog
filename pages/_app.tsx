@@ -46,7 +46,11 @@ const MenuItem = styled.a`
 const IconContainer = styled.span`
   display: flex;
 `
-const Icon = styled.span`
+const Icon = styled.button`
+  width: 33px;
+  height: 33px;
+  border: none;
+  background: none;
   color: inherit;
   fill: currentColor;
   cursor: pointer;

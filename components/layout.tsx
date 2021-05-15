@@ -9,17 +9,39 @@ export const siteTitle = 'Next.js Sample Website'
 
 
 const SayHelloHeader = styled.h1`
+  width: 18ch;
   font-size: 2.5rem;
   padding: 0;
   margin-bottom: 0.5rem;
+  animation: typing 2s steps(18), blink .5s step-end 10 alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid transparent;
+  font-family: monospace;
+  font-weight: bolder;
 
   @media (max-width: 768px) {
     font-size: 2rem;
   }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+  }
+      
+  @keyframes blink {
+    50% {
+      border-color: black;
+    }
+
+  }
 `
-const SectionHeader = styled(SayHelloHeader)`
+const SectionHeader = styled.h1`
   font-size: 1.5rem;
   color: #FF0878;
+  padding: 0;
+  margin-bottom: 0.5rem;
 `
 
 const AboutMe = styled.h2`
@@ -77,8 +99,8 @@ export default function Layout({
       <div className={styles.container}>
         {home &&
           <>
-            <SayHelloHeader>Hey, I'm Daniel Xu.</SayHelloHeader>
-            <AboutMe>I am a undergraduate student at Sun Yat-Sen University, major in software engineering. After graduation，I think I will be a Front-end developer. 💻</AboutMe>
+            <SayHelloHeader>Hi, I'm Daniel Xu.</SayHelloHeader>
+            <AboutMe>I am a undergraduate student at Sun Yat-Sen University, major in software engineering. After graduating, I think I will be a Front-end developer. 💻</AboutMe>
             <SectionHeader>Blogs</SectionHeader>
           </>
         }
