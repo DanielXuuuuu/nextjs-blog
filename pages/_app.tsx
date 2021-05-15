@@ -14,13 +14,19 @@ import Light from '../assets/svg/light.svg'
 import Dark from '../assets/svg/dark.svg'
 import Rss from '../assets/svg/rss.svg'
 
-// const HeaderWrapper = styled.div`
-//   border-bottom: rgb(190, 190, 190) 0.1rem solid;
-// `
+const HeaderWrapper = styled.div`
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  top: 0;
+  background-color: ${({ theme }) => theme.body}; 
+  transition: all 0.2s linear;
+  /* border-bottom: rgb(190, 190, 190) 0.1rem solid; */
+`
 
 const Header = styled.header`
   margin: 0 auto;
-  padding: 3rem 1.5rem 0;
+  padding: 2rem 1.5rem;
   max-width: 45rem;
   display: flex;
   align-items: center;
@@ -64,18 +70,18 @@ function App({ Component, pageProps }: AppProps) {
       <GlobalStyles />
       {isMounted &&
         <>
-          {/* <HeaderWrapper> */}
-          <Header>
-            <MenuContainer>
-              <Link href="/"><MenuItem className={utilStyles.colorInherit}>Home</MenuItem></Link>
-              <Link href="/about"><MenuItem className={utilStyles.colorInherit}>About</MenuItem></Link>
-            </MenuContainer>
-            <IconContainer>
-              <Icon onClick={darkMode.toggle}>{darkMode.value ? <Dark /> : <Light />}</Icon>
-              <LinkIcon as="a" href="/rss/feed.xml" target="__blank"><Rss /></LinkIcon>
-            </IconContainer>
-          </Header>
-          {/* </HeaderWrapper> */}
+          <HeaderWrapper>
+            <Header>
+              <MenuContainer>
+                <Link href="/"><MenuItem className={utilStyles.colorInherit}>Home</MenuItem></Link>
+                <Link href="/about"><MenuItem className={utilStyles.colorInherit}>About</MenuItem></Link>
+              </MenuContainer>
+              <IconContainer>
+                <Icon onClick={darkMode.toggle}>{darkMode.value ? <Dark /> : <Light />}</Icon>
+                <LinkIcon as="a" href="/rss/feed.xml" target="__blank"><Rss /></LinkIcon>
+              </IconContainer>
+            </Header>
+          </HeaderWrapper>
           <Component {...pageProps} />
         </>}
     </ThemeProvider >
