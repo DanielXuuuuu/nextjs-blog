@@ -23,6 +23,10 @@ const MetaItemContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `
 const MetaItem = styled.span`
   font-size: 0.9rem;
