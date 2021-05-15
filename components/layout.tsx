@@ -7,9 +7,22 @@ import styles from './layout.module.css'
 const name = 'Daniel Xu'
 export const siteTitle = 'Next.js Sample Website'
 
-const HomeHeader = styled.div`
-  margin-bottom: 2rem;
+
+const SayHelloHeader = styled.h1`
+  font-size: 2.5rem;
+  padding: 0;
+  margin-bottom: 0.5rem;
+`
+const SectionHeader = styled(SayHelloHeader)`
+  font-size: 1.5rem;
   color: #FF0878;
+`
+
+const AboutMe = styled.h2`
+  font-size: 1rem;
+  font-weight: normal;
+  color: #555;
+  margin: 0 auto 2rem;
 `
 
 const Footer = styled.footer`
@@ -58,7 +71,13 @@ export default function Layout({
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <div className={styles.container}>
-        {home && <HomeHeader>LATEST POSTS</HomeHeader>}
+        {home &&
+          <>
+            <SayHelloHeader>Hey, I'm Daniel Xu.</SayHelloHeader>
+            <AboutMe>I am a undergraduate student at Sun Yat-Sen University, major in software engineering. After graduation，I think I will be a Front-end developer. 💻</AboutMe>
+            <SectionHeader>Blogs</SectionHeader>
+          </>
+        }
         <main>{children}</main>
       </div>
       <Footer>

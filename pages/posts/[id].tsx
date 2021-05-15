@@ -1,8 +1,6 @@
-import { useEffect } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { GetStaticPaths, GetStaticProps } from 'next'
-
 
 import Layout from '../../components/layout'
 import Date from '../../components/date'
@@ -10,7 +8,6 @@ import utilsStyles from '../../styles/utils.module.css'
 import styled from 'styled-components'
 
 import { getAllPostIds, getPostData, Post } from '../../lib/posts'
-import Prism from 'prismjs'
 
 
 const PostTitleContainer = styled.div`
@@ -19,7 +16,7 @@ const PostTitleContainer = styled.div`
 
 const BorderCircleImage = styled.img`
   border-radius: 50%;
-  vertical-align: top;
+  vertical-align: middle;
 `
 
 const MetaItemContainer = styled.div`
@@ -29,7 +26,6 @@ const MetaItemContainer = styled.div`
 `
 const MetaItem = styled.span`
   font-size: 0.9rem;
-  line-height: 1.2rem;
   color: #666;
 `
 
@@ -49,12 +45,6 @@ export default function PostDetail({
     contentHtml
   } = postData
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      Prism.highlightAll();
-    }
-  }, []);
-
   return (
     <Layout>
       <Head>
@@ -68,10 +58,10 @@ export default function PostDetail({
               <BorderCircleImage
                 src="/images/profile.jpeg"
                 alt="Picture of the post author"
-                width={20}
-                height={20}
+                width={25}
+                height={25}
               />
-              {' Daniel Xu • '}<Date dateString={meta.publishedOn} />
+              {' Daniel Xu / '}<Date dateString={meta.publishedOn} />
             </MetaItem>
             <MetaItem>☕ ☕ ☕ {meta.readTime}</MetaItem>
           </MetaItemContainer>

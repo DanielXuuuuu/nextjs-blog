@@ -4,6 +4,8 @@ import matter from 'gray-matter'
 import remark from 'remark'
 import html from 'remark-html'
 import prism from 'remark-prism';
+import headings from 'remark-autolink-headings'
+import slug from 'remark-slug'
 import readingTime from 'reading-time'
 
 const postsDirectory = path.join(process.cwd(), 'posts')
@@ -68,6 +70,8 @@ export async function getPostData(id: string): Promise<Post> {
   const matterResult = matter(fileContent)
 
   const processedContent = await remark()
+    .use(slug)
+    .use(headings)
     .use(html)
     .use(prism)
     .process(matterResult.content)

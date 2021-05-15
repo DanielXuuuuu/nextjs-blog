@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components'
 export const lightTheme = {
   body: '#FFF',
   footer: '#FAFAFB',
-  text: '#363537',
+  text: '#000',
   toggleBorder: '#FFF',
   background: '#363537',
 }

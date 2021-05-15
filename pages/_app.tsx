@@ -14,17 +14,27 @@ import Light from '../assets/svg/light.svg'
 import Dark from '../assets/svg/dark.svg'
 import Rss from '../assets/svg/rss.svg'
 
-const HeaderWrapper = styled.div`
-  border-bottom: rgb(190, 190, 190) 0.1rem solid;
-`
+// const HeaderWrapper = styled.div`
+//   border-bottom: rgb(190, 190, 190) 0.1rem solid;
+// `
 
 const Header = styled.header`
-  margin: 0 auto;
+  margin: 3rem auto 4rem;
   padding: 0 1.5rem;
-  max-width: 40rem;
+  max-width: 45rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+`
+const MenuContainer = styled.div`
+  display: flex;
+`
+const MenuItem = styled.a`
+  cursor: pointer;
+  font-size: 1.2rem;
+  &+& {
+    margin-left: 1rem;
+  }
 `
 
 const IconContainer = styled.span`
@@ -54,19 +64,18 @@ function App({ Component, pageProps }: AppProps) {
       <GlobalStyles />
       {isMounted &&
         <>
-          <HeaderWrapper>
-            <Header>
-              <h3 className={utilStyles.headingLg}>
-                <Link href="/">
-                  <a className={utilStyles.colorInherit}>Daniel's Blog.</a>
-                </Link>
-              </h3>
-              <IconContainer>
-                <Icon onClick={darkMode.toggle}>{darkMode.value ? <Dark /> : <Light />}</Icon>
-                <LinkIcon as="a" href="/rss/feed.xml" target="__blank"><Rss /></LinkIcon>
-              </IconContainer>
-            </Header>
-          </HeaderWrapper>
+          {/* <HeaderWrapper> */}
+          <Header>
+            <MenuContainer>
+              <Link href="/"><MenuItem className={utilStyles.colorInherit}>Home</MenuItem></Link>
+              <Link href="/about"><MenuItem className={utilStyles.colorInherit}>About</MenuItem></Link>
+            </MenuContainer>
+            <IconContainer>
+              <Icon onClick={darkMode.toggle}>{darkMode.value ? <Dark /> : <Light />}</Icon>
+              <LinkIcon as="a" href="/rss/feed.xml" target="__blank"><Rss /></LinkIcon>
+            </IconContainer>
+          </Header>
+          {/* </HeaderWrapper> */}
           <Component {...pageProps} />
         </>}
     </ThemeProvider >
