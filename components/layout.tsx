@@ -12,6 +12,10 @@ const SayHelloHeader = styled.h1`
   font-size: 2.5rem;
   padding: 0;
   margin-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 `
 const SectionHeader = styled(SayHelloHeader)`
   font-size: 1.5rem;

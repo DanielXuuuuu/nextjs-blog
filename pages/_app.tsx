@@ -19,8 +19,8 @@ import Rss from '../assets/svg/rss.svg'
 // `
 
 const Header = styled.header`
-  margin: 3rem auto 4rem;
-  padding: 0 1.5rem;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 0;
   max-width: 45rem;
   display: flex;
   align-items: center;

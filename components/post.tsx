@@ -18,10 +18,14 @@ const PostWrapper = styled.a`
 `
 
 const PostTitle = styled.h2`
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   line-height: 1.5rem;
   margin-bottom: 0;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 `
 const PostAbstract = styled.div`
   font-size: 1rem;

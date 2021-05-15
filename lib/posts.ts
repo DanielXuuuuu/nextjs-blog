@@ -69,12 +69,15 @@ export async function getPostData(id: string): Promise<Post> {
 
   const matterResult = matter(fileContent)
 
+  console.log(matterResult.content)
+
   const processedContent = await remark()
     .use(slug)
     .use(headings)
     .use(html)
     .use(prism)
     .process(matterResult.content)
+
 
   const contentHtml = processedContent.toString()
   const stats = readingTime(contentHtml);
